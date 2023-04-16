@@ -16,9 +16,7 @@ const app = express()
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-app.use(cors({
-    origin: ["http://127.0.0.1:5173", "http://localhost:5173"]
-}))
+app.use(cors())
 
 app.use(express.json())
 
@@ -32,5 +30,7 @@ app.use(habitacionesRoutes)
 
 app.use(express.static(join(__dirname, '../client/dist')))
 
-app.listen(PORT)
-console.log(`Server is running on http://localhost:${PORT}`)
+app.listen(PORT), ()=>{
+    console.log("app", app)
+    console.log(`Server is running on http://localhost:${PORT}`)
+}

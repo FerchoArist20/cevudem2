@@ -1,10 +1,11 @@
 import { createPool } from 'mysql2/promise'
 
 const data = {
-    host: "localhost",
+    host: "database",
     user: "root",
-    password: "",
-    database: "dbcev"
+    password: "secret",
+    database: "dbcev",
+    port:"3306"
 }
 
 export class Pool {
@@ -17,3 +18,4 @@ export class Pool {
         return promise
     }
 }
+
