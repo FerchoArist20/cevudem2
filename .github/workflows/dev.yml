@@ -3,7 +3,8 @@ name: dev
 on:
   push:
     branches:
-      - dev
+      - main
+
 jobs:
   test_dev:
     runs-on: ubuntu-18.04
