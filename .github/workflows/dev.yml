@@ -6,7 +6,7 @@ on:
       - main
 jobs:
   test_dev:
-    runs-on: ubuntu-18.04
+    runs-on: self-hosted
     steps:
       - name: message
         run: echo "hello"
