@@ -3,16 +3,11 @@ version: "3.3"
 services:
   app:
     stdin_open: true
-    working_dir: /app
-    image: node:18.15.0
-    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    build: 
+      context: .
+      dockerfile: DockerfileClient
     ports:
       - "5173:5173"
-    volumes:
-      - ./client:/app
-      - /app/node_modules
-    expose:
-      - 5173   
    
   database:
     image: "mysql:latest"
@@ -20,27 +15,22 @@ services:
     volumes:
       - "./mysql_data:/var/lib/mysql"
     environment:
-      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=secret 
     ports:
       - "3308:3306"
     expose:
       - 3308
     
   api:
-    image: node:18.15.0
     stdin_open: true
-    working_dir: /server
-    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    build: 
+      context: .
+      dockerfile: DockerfileServer
+
     ports:
       - "3000:3000"
-    volumes:
-      - ./server:/server
-      - /server/node_modules
-    expose:
-      - 3000
-    links:
-      - "database: database.api"
     depends_on:
       - database
+    links:
+      - "database: database.api"
 
-  
