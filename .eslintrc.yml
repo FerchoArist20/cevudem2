@@ -1,11 +1,12 @@
 env:
-  browser: true
-  es2021: true
+  browser: true 
+  node: true 
 extends: plugin:react/recommended
 overrides: []
-parserOptions:
-  ecmaVersion: latest
-  sourceType: module
+parserOptions: {
+  "ecmaVersion": 2022,
+  "sourceType": "module"
+}
 plugins:
   - react
 rules: {}

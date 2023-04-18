@@ -4,7 +4,7 @@
     "eslint-plugin-react": "^7.32.2"
   },
   "scripts": {
-    "eslint": "eslint \"**/*.js\" \"**/*.jsx\""
+    "eslint": "eslint \"**/*.js\" \"**/*.jsx\" --fix"
   }
   
 }

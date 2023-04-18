@@ -1,0 +1,15 @@
+name: dev
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_dev:
+    runs-on: self-hosted
+    steps:
+      - name: message
+        run: echo "hello"
+
+
