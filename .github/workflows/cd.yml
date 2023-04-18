@@ -15,16 +15,17 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
-    - name: Build and push Docker images
-      run: |
-        for service in $(docker-compose config --services); do
-          image_name=$(docker-compose images $service --format "{{.Repository}}")
-          image_tag=$(docker-compose images $service --format "{{.Tag}}")
-          repo_name=$(echo $image_name | awk -F / '{print $NF}')
-          docker-compose build $service
-          docker tag $image_name:$image_tag $DOCKERHUB_USERNAME/$repo_name:$image_tag
-          docker push $DOCKER_USERNAME/$repo_name:$image_tag
-        done
+    - name: Build and push images
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      run: |
+        docker-compose build
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        for service in $(docker-compose config --services); do
+          image_name=$(docker-compose images -q $service)
+          image_tag=$(docker inspect --format='{{index .Config.Labels "com.docker.compose.version"}}' $image_name)
+          repo_name=$(echo $service | tr '[:upper:]' '[:lower:]')
+          docker tag $image_name $DOCKER_USERNAME/$repo_name:$image_tag
+          docker push $DOCKER_USERNAME/$repo_name:$image_tag
+        done
