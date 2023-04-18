@@ -1,3 +1,5 @@
+
+import React from 'react';
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useAppContext } from '../context/Provider'
@@ -5,6 +7,8 @@ import { Form, Formik } from 'formik'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faIdCard, faCalendar } from '@fortawesome/free-solid-svg-icons'
 import moment from 'moment'
+import PropTypes from 'prop-types';
+
 
 function Options({ habitaciones }) {
     return (
@@ -15,6 +19,15 @@ function Options({ habitaciones }) {
         </>
     )
 }
+Options.propTypes = {
+    habitaciones: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      capacidad: PropTypes.number.isRequired
+    })).isRequired
+  };
+  
+
+
 
 function FormReserva() {
     const params = useParams()
@@ -223,4 +236,5 @@ function FormReserva() {
     )
 }
 
-export default FormReserva
+export default FormReserva;
+

@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+
+import React from 'react';
 import { Link } from 'react-router-dom'
 import UserCard from '../components/UserCard'
 
@@ -15,5 +18,9 @@ function UsersList({ users }) {
         )
     }
 }
+
+UsersList.propTypes = {
+    users: PropTypes.array.isRequired,
+  };
 
 export default UsersList

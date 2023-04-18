@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useState } from 'react'
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -83,5 +85,9 @@ function TableComponent({ columns, rows }) {
         </Paper>
     )
 }
+TableComponent.propTypes = {
+    columns: PropTypes.array.isRequired,
+    rows: PropTypes.array.isRequired,
+};
 
 export default TableComponent

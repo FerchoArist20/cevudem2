@@ -1,6 +1,7 @@
 import { useAppContext } from '../context/Provider'
 import { Form, Formik } from 'formik'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import React from 'react';
 import { faEnvelope, faIdCard, faPhone, faLock, faKey } from '@fortawesome/free-solid-svg-icons'
 import md5 from 'md5'
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
 import { useAppContext } from '../context/Provider'

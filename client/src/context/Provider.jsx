@@ -1,3 +1,5 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import { useContext, useState, useEffect } from "react";
 import { Context } from './Context'
 import { useNavigate } from 'react-router-dom'
@@ -432,3 +434,8 @@ export const ContextProvider = ({ children }) => {
         </Context.Provider>
     )
 }
+ContextProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+  };
+
+  

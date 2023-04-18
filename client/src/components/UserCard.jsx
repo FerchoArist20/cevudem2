@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+import React from 'react';
 import { useAppContext } from '../context/Provider'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -97,3 +99,6 @@ function UserCard({ user }) {
 }
 
 export default UserCard
+UserCard.propTypes = {
+    user: PropTypes.object.isRequired,
+  };

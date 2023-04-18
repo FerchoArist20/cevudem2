@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect } from "react";
 import { Dropdown, Avatar } from "flowbite-react"
 import userPicture from '../assets/img/user.png'
