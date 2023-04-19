@@ -6,28 +6,26 @@ services:
     build: 
       context: . 
       dockerfile: DockerfileClient
-    image: camila12ospina/cevudem2-app
+    image: camila12ospina/cevudem:app
     ports:
       - "5173:5173"
    
   database:
-    image: "mysql:latest"
+    stdin_open: true
+    build: 
+      context: .
+      dockerfile: DockerfileDatabase
+    image: camila12ospina/cevudem:database
     restart: always
-    volumes:
-      - "./mysql_data:/var/lib/mysql"
-    environment:
-      - MYSQL_ROOT_PASSWORD=secret 
     ports:
       - "3308:3306"
-    expose:
-      - 3308
     
   api:
     stdin_open: true
     build: 
       context: .
       dockerfile: DockerfileServer
-    image: camila12ospina/cevudem2-api 
+    image: camila12ospina/cevudem:api
     ports:
       - "3000:3000"
     depends_on:
