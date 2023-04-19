@@ -4,8 +4,9 @@ services:
   app:
     stdin_open: true
     build: 
-      context: .
+      context: . 
       dockerfile: DockerfileClient
+    image: camila12ospina/cevudem2-app
     ports:
       - "5173:5173"
    
@@ -26,7 +27,7 @@ services:
     build: 
       context: .
       dockerfile: DockerfileServer
-
+    image: camila12ospina/cevudem2-api 
     ports:
       - "3000:3000"
     depends_on:
