@@ -18,7 +18,7 @@ services:
     image: camila12ospina/cevudem:database
     restart: always
     ports:
-      - "3308:3306"
+      - "3306:3306"
     
   api:
     stdin_open: true
