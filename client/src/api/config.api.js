@@ -1,1 +1,1 @@
-export const ROUTE = "http://100.24.42.119:3000" // Enlace/Ruta del backend
+export const ROUTE = "/" // Enlace/Ruta del backend
